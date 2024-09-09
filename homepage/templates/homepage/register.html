@@ -1,0 +1,21 @@
+{% extends 'main_layout.html' %} {% load widget_tweaks %} {% load bootstrap %}
+{% load static %} {% block title %} Register {% endblock title %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4 mb-3">
+        <div class="login-reg mt-3">
+            {% include 'message.html' %}
+            <div class="title-text mb-4">
+                <div class="title signup text-primary">Create an Account</div>
+            </div>
+                <form action="" method="POST" id="changepp">
+                    {% csrf_token %}
+                    {{ form | bootstrap }}
+                            <input type="submit" value="Signup" class="btn btn-primary w-100">
+                </form>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

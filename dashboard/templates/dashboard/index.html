@@ -1,0 +1,53 @@
+{% extends 'user_layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css_file %}
+{% endblock css_file %}
+{% block title %}User Dashboard{% endblock title %}
+
+{% block main %}
+<style>
+    .form-group label{
+    display:none;}
+
+    .form-group input{
+    border: 1px solid blue;}
+</style>
+<div class="container-fluid m-0 p-0">
+    <div class="row mt-4">
+        <div class="col-md-11 mx-auto d-flex justify-content-between">
+            <h3>Places</h3>
+           <form method="GET" class="d-flex align-items-center">
+                {{filter.form|crispy}}
+                <button type="submit" class="btn btn-primary btn-sm ms-2">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <section id="featured-box">
+        <div class="container my-3">
+            <div class="row">
+                {% if results %}
+                    {% for place in results %}
+                        <div class="col-md-4">
+                            <div class="country-card"><img src="/{{ place.place_image }}" class="img img-responsive w-100" >
+                                <div class="country-name">{{ place.place_name }}</div>
+                                <div class="desc">{{ place.country.country_name}}</div>
+                                 <a class="btn btn-secondary btn-sm" href="{% url 'place_details' place.id %}">View Details</a>
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    </div>
+</div>
+<script>
+    document.getElementsByTagName('input')[1].placeholder = 'Enter place name';
+</script>
+
+{% endblock main %}

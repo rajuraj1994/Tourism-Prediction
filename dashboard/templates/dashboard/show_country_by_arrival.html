@@ -1,0 +1,71 @@
+{% extends 'user_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<style>
+    button a, button a:hover{
+color:white;
+text-decoration:none;
+}
+</style>
+    <div class="container-fluid">
+    <div class="message mt-2">
+        {% include 'message.html' %}
+    </div>
+    <div class="row">
+        <h1 class="text-primary">Countries - No of Arrivals</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+             <section class="mt-3">
+        <div class="card shadow bg-light">
+            <div class="card-header">
+                <h3>Filters</h3>
+            </div>
+            <div class="card-body">
+            <form method="GET">
+                {{result_filter.form|crispy}}
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Search</button>
+            </form>
+                </div>
+        </div>
+    </section>
+        </div>
+        <div class="col-md-8">
+            <section class="mt-3">
+        <div class="row">
+            <div class="col-md-12 mx-auto shadow">
+                <table class="table table-primary table-hover">
+                    <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Actions</th>
+                    </thead>
+                    </tr>
+                    <tbody>
+                    {% for i in results %}
+                    <tr>
+                        <td>{{i.country_name}}</td>
+                        <td>{{i.country_code}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><a href="{% url 'show_details_arrival_user' i.id %}">View</a></button>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
+
+
+

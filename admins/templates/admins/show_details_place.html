@@ -1,0 +1,61 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<style>
+    button a, button a:hover{
+color:white;
+text-decoration:none;
+}
+</style>
+<div class="container-fluid mb-3">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header">
+        <h1>Place - {{results.place_name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card col-md-11 shadow mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title">{{results.place_name}} - {{results.country.country_name}}</h5>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text"><strong>Location:</strong> {{results.place_location}}</p>
+                    <p class="card-text" ><strong>About Place:</strong> {{results.place_desc}}</p>
+                     <p class="card-text" ><strong>Price per person:</strong> $ {{results.price}}</p>
+                       <p class="card-text" ><strong>Total Days:</strong> {{results.total_days}}</p>
+                </div>
+                <img class="card-img-top" src="/{{results.place_image}}" />
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary"><a href="{% url 'update_place' results.id %}">Edit</a></button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-10 offset-md-1 text-center text-lg-start mt-4">
+                <h3 class="text-center text-danger">Comments and Rating</h3>
+             {% if comments %}
+                {% for comment in comments %}
+
+            <h5>{{comment.user.username}}</h5>
+            <p>{{comment.comment}}</p>
+            <p>Rating - <strong>{{comment.rating}}</strong>  on {{comment.created_date}} </p>
+               <hr/>
+            {% endfor %}
+            {% else %}
+            <h5 class="text-center text-danger">No comments yet.</h5>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

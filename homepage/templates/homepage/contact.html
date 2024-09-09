@@ -1,0 +1,49 @@
+{% extends 'main_layout.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+    <header id="contact">
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+
+                <div class="col-lg-7 text-center text-lg-start">
+
+                    <h1 class="display-4 fw-bold lh-1 mb-3 h1text">Hello there, we are here.</h1>
+                    <p class="col-lg-10 fs-4 h1text">Just make simplified contact, without burden. We will contact you
+                        as
+                        soon as possible</p>
+                </div>
+                <div class="col-md-10 mx-auto col-lg-5 shadow" style="margin-top: 90px">
+  {% include 'message.html' %}
+                    <form class="p-4 p-md-5 rounded-3 bg-white" action="" method="POST"
+                          enctype="multipart/form-data">
+                        <h1 class="mb-2">Get in touch with us!</h1>
+                        {% csrf_token %}
+                        {{ form | bootstrap }}
+                        <br>
+                        <button class="w-100 btn btn-sm btn-primary" type="submit">Submit Here</button>
+                        <hr class="my-4">
+                        <small class="text-muted">Please be sure on your provided information before submitting!</small>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    </div>
+</div>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = "Enter your good name"
+        form_fields[2].placeholder = "Enter email : youremail@com"
+        form_fields[3].placeholder = "Enter phone number"
+        form_fields[4].placeholder = "Enter preferred call date"
+
+        for (field in form_fields) {
+            form_fields[field].className += ' my-2'
+        }
+    </script>
+{% endblock %}

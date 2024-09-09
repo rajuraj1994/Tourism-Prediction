@@ -1,0 +1,171 @@
+{% extends 'user_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<style>
+    button a, button a:hover{
+color:white;
+text-decoration:none;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto shadow">
+            <h3 class="text-center mb-5 text-primary">Expenditure for: {{results.country_name}}</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Expenditure ($)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1998</td>
+                    <td>{{results.e1998}}</td>
+                </tr>
+                <tr>
+                    <td>1999</td>
+                    <td>{{results.e1999}}</td>
+                </tr>
+                <tr>
+                    <td>2000</td>
+                    <td>{{results.e2000}}</td>
+                </tr>
+                <tr>
+                    <td>2001</td>
+                    <td>{{results.e2001}}</td>
+                </tr>
+                <tr>
+                    <td>2002</td>
+                    <td>{{results.e2002}}</td>
+                </tr>
+                <tr>
+                    <td>2003</td>
+                    <td>{{results.e2003}}</td>
+                </tr>
+                <tr>
+                    <td>2004</td>
+                    <td>{{results.e2004}}</td>
+                </tr>
+                <tr>
+                    <td>2005</td>
+                    <td>{{results.e2005}}</td>
+                </tr>
+                <tr>
+                    <td>2006</td>
+                    <td>{{results.e2006}}</td>
+                </tr>
+                <tr>
+                    <td>2007</td>
+                    <td>{{results.e2007}}</td>
+                </tr>
+                <tr>
+                    <td>2008</td>
+                    <td>{{results.e2008}}</td>
+                </tr>
+                <tr>
+                    <td>2009</td>
+                    <td>{{results.e2009}}</td>
+                </tr>
+                <tr>
+                    <td>2010</td>
+                    <td>{{results.e2010}}</td>
+                </tr>
+                <tr>
+                    <td>2011</td>
+                    <td>{{results.e2011}}</td>
+                </tr>
+                <tr>
+                    <td>2012</td>
+                    <td>{{results.e2012}}</td>
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    <td>{{results.e2013}}</td>
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    <td>{{results.e2014}}</td>
+                </tr>
+                <tr>
+                    <td>2015</td>
+                    <td>{{results.e2015}}</td>
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    <td>{{results.e2016}}</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>{{results.e2017}}</td>
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    <td>{{results.e2018}}</td>
+                </tr>
+                <tr>
+                    <td>2019</td>
+                    <td>{{results.e2019}}</td>
+                </tr>
+                <tr>
+                    <td>2020</td>
+                    <td>{{results.e2020}}</td>
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td>{{results.e2021}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="h4 text-white bg-dark">Prediction </td>
+
+                </tr>
+                {% if results.e2021 < prediction %}
+                 <tr class="bg-success text-white">
+                    <td>2022</td>
+                    <td>{{prediction}}</td>
+                </tr>
+                {% endif %}
+                {% if results.e2021 > prediction %}
+                 <tr class="bg-danger text-white">
+                    <td>2022</td>
+                    <td>{{prediction}}</td>
+                </tr>
+                {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+
+
+    </div>
+    <div class="row">
+            <h3 class="text-center mt-5">Expenditure: Line Graph</h3>
+            <canvas id="myChart7" width="400" height="200"></canvas>
+            <script>
+                const ctx7 = document.getElementById('myChart7').getContext('2d');
+                const myChart7 = new Chart(ctx7, {
+                    type: 'line',
+                    data: {
+                        labels: ['1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022 (prediction)'],
+                        datasets: [{
+                            label: 'No of arrivals',
+                            data: [{{results.e1998}},{{results.e1999}},{{results.e2000}},{{results.e2001}},{{results.e2002}},{{results.e2003}},{{results.e2004}},{{results.e2005}},{{results.e2006}},{{results.e2007}},{{results.e2008}},{{results.e2009}},{{results.e2010}},{{results.e2011}},{{results.e2012}},{{results.e2013}},{{results.e2014}},{{results.e2015}},{{results.e2016}},{{results.e2017}},{{results.e2018}},{{results.e2019}},{{results.e2020}},{{results.e2021}},{{prediction}}],
+                            fill: false,
+                            borderColor:  'rgba(14, 145, 138, 0.8)',
+                            tension: 1
+                        }]
+                    },
+                });
+            </script>
+
+    </div>
+</div>
+
+
+    {% endblock main %}
+
+
+

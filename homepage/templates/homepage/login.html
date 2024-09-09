@@ -1,0 +1,57 @@
+{% extends 'main_layout.html' %}
+{% load widget_tweaks %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4 mb-3">
+        <div class="login-reg mt-3">
+            <div class="title-text">
+                <div class="title login">
+                    <img src="{% static 'images/login.gif' %}" alt="logo" class="logo w-50">
+                </div>
+
+                <div class="title signup text-primary">Signup Form</div>
+            </div>
+            <div class="form-container">
+
+                <div class="form-inner">
+                    <form action="#" method="POST" class="login">
+                          {% include 'message.html' %}
+                        {% csrf_token %}
+                        <div class="field">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="pass-link">
+                            <a href="/password_reset">Forgot password?</a>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer slide"></div>
+                            <input type="submit" value="Login">
+                        </div>
+                        <div class="signup-link fs-4">
+                            Not a member? <a href="/register" class="text-decoration-none">Signup now</a>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    </div>
+{% endblock main %}
+
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock js_file %}

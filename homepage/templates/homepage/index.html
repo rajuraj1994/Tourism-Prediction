@@ -1,0 +1,82 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+{% block title %}Tourism Prediction - Home{% endblock title %}
+
+{% block main %}
+    <header id="header-first">
+        <div class="px-4 py-5 text-center">
+            <img src="{% static 'images/logo.png' %}" alt="" id="houseimg" style="visibility:hidden">
+            <h1 class=" display-1 fw-bold text-light ">Discover Yourself</h1>
+            <div class=" col-lg-6 mx-auto">
+                <p class="des-text mb-4 text-light">In the world thats feels your Heart!</p>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="featured-box">
+        <div class="container my-5">
+            <div class="intro">
+                <h1 class="text-danger display-2 fw-bold text-center py-4 ">Featured Destination</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/dubai.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Dubai, U.A.E</div>
+                        <div class="desc">Explore your time here</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/bali.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Bali, Indonesia</div>
+                        <div class="desc">Beach is the main hightlight</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/greece.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Greece</div>
+                        <div class="desc">Wanna sky diving? VIsit Here</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold">Best Adventure Experience</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In aut molestias iure soluta
+                dignissimos ex impedit sapiente. Eveniet accusantium, consequatur facilis quis obcaecati animi nisi
+                perferendis, consequuntur natus enim ut!</p>
+        </div>
+        <div class="overflow-hidden" style="max-height: 75vh;">
+            <div class="container px-5">
+                <img src="{% static 'images/mountain.jpg' %}" class="img-fluid rounded-pill shadow-lg mb-4" width="1200"
+                     height="1200">
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-dark py-20">
+        <div class="container">
+            <h2 class="mb-8 mb-lg-16 display-1 fw-bold text-white">Let us serve you in your <br> Holiday.</h2>
+            <div class="row">
+                <div class="col col-lg-7 mb-3 mb-lg-0">
+                    <p class="lead text-muted mb-1">Get exclusive discount for holiday, Join us with us!</p>
+                </div>
+                <div class="col-12 col-lg-auto ms-auto"><a class="btn btn-primary w-100 px-12 w-lg-auto" href="/register">Join
+                    us now</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock js_file %}
+
+

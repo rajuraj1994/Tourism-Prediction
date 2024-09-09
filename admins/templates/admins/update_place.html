@@ -1,0 +1,27 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h3 class="text-center">Update Place</h3>
+                {% include 'message.html' %}
+                <form class="p-4 border rounded-3 bg-white myform" action="" method="POST"
+                      enctype="multipart/form-data">
+                    {% csrf_token %} {{ form | bootstrap }}
+                    <br>
+                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                    <hr class="my-4">
+                    <small class="text-muted">Be sure on your information.</small>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock main %}
+
+
+

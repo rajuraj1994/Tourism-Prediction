@@ -1,0 +1,66 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block title %}Show Admins{% endblock title %}
+
+{% block main %}
+  <div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header">
+        <h1>Admins</h1>
+        <button class="btn btn-success btn-sm"><a class="" href="/admins/addadmin">Add New Admin</a></button>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+             <section class="mt-3">
+        <div class="card shadow">
+            <div class="card-header">
+                <h3>Filters</h3>
+            </div>
+            <div class="card-body">
+            <form method="GET">
+                {{student_filter.form|crispy}}
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Search</button>
+            </form>
+                </div>
+        </div>
+    </section>
+        </div>
+        <div class="col-md-9">
+            <section class="mt-3">
+        <div class="row">
+            <div class="col-md-11 mx-auto shadow">
+                <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                    </thead>
+                    </tr>
+                    <tbody>
+                    {% for i in results %}
+                    <tr>
+                        <td>{{i.username}}</td>
+                        <td>{{i.email}}</td>
+<td>
+                         <a href="{% url 'delete_admin' i.id %}"
+                        onclick="return confirm('Are you sure want to delete this student?')" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock main %}

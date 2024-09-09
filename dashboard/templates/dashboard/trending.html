@@ -1,0 +1,36 @@
+{% extends 'user_layout.html' %}
+{% load static %}
+{% block css_file %}
+{% endblock css_file %}
+{% block title %}Trending Places{% endblock title %}
+
+{% block main %}
+<div class="container-fluid m-0 p-0">
+    <div class="row">
+        <h3>Top Places</h3>
+        <section id="featured-box">
+        <div class="container my-3">
+            <div class="row">
+                {% if results %}
+                    {% for place in results %}
+                        <div class="col-md-6 mt-4">
+                             <p class="text-primary text-center">Trending #{{forloop.counter}}</p>
+                            <div class="country-card"><img src="/{{ place.place_image }}" class="img img-responsive w-100" >
+                                <div class="country-name">{{ place.place_name }}</div>
+                                <div class="desc">{{ place.country.country_name}}</div>
+
+                                 <a class="btn btn-secondary btn-sm" href="{% url 'place_details' place.id %}">View Details</a>
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    </div>
+</div>
+
+{% endblock main %}

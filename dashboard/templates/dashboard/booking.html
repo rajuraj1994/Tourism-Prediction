@@ -1,0 +1,54 @@
+{% extends 'user_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<style>
+    button a, button a:hover{
+color:white;
+text-decoration:none;
+}
+
+</style>
+<div class="container-fluid">
+    <div class="message mt-2">
+        {% include 'message.html' %}
+    </div>
+    <div class="row">
+        <h1>{{results.place_name}} - {{results.country.country_name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="mt-3">
+                <div class="row">
+                    <div class="col-md-11 card mx-auto shadow">
+                        <p class="card-header">{{results.place_name}}</p>
+                        <div class="card-body">
+                            <p class="card-text">{{results.place_location}}</p>
+                            <p class="card-text">{{results.place_desc}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 offset-md-2 text-center text-lg-start">
+                <h3 class="text-center">Book Now</h3>
+                <form class="p-4 border rounded-3 bg-white myform" action="" method="POST"
+                      enctype="multipart/form-data">
+                    {% csrf_token %} {{ form | bootstrap }}
+                    <br>
+                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock main %}
+
+
+

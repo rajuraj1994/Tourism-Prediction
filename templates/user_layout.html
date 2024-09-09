@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/admins.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>{% block title %} {% endblock title %}</title>
+    <style>
+        ul li a{
+        color:white;
+        text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand shadow sticky-top bg-light" id="navbar-admin">
+    <div class="container-fluid">
+
+        <a href="/dashboard"><img src="{% static 'images/Group 3.png' %}" width="200px"></a>
+        <ul class="navbar-nav flex-nowrap ms-auto">
+            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
+                                                                aria-expanded="false" data-bs-toggle="dropdown"
+                                                                href="#"><i class="fas fa-search"></i></a>
+                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                    <form class="me-auto navbar-search w-100">
+                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
+                                                        placeholder="Search for ...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <div class="d-none d-sm-block topbar-divider"></div>
+            <button class="btn btn-sm hover text-danger"><a href="/" style="color:red;">Welcome, @{{ request.user.username }}</a></button>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>User Panel</h3>
+            <strong>UP</strong>
+            </button>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/dashboard" class="{{ activate_adminhome }}" aria-expanded="false"><i class="fa fa-home"
+                                                                                            aria-hidden="true"></i> Home</a>
+            </li>
+
+            <li>
+                <a href="{% url 'trending' %}" class="{{ activate_trending }}" aria-expanded="false"><i class="fa fa-home"
+                                                                                            aria-hidden="true"></i> Trending Places</a>
+            </li>
+
+            <li>
+                <a href="{% url 'show_booking' %}" class="{{ activate_booking }}" aria-expanded="false"><i
+                        class="fa fa-ticket-alt" aria-hidden="true"></i>Booked
+                    Ticket</a>
+            </li>
+
+            <li>
+                <a href="{% url 'show_country_user' %}" aria-expanded="false" class="{{ activate_country }}"><i class="fa fa-globe"
+                                                                                                     aria-hidden="true"></i>
+                    Country</a>
+            </li>
+
+            <li>
+                <a href="/dashboard/show_country_by_arrival" aria-expanded="false" class="{{ activate_country_arrival }}"><i class="fa fa-globe"
+                                                                                                     aria-hidden="true"></i>
+                    Arrival by Country</a>
+            </li>
+
+            <li>
+                <a href="/dashboard/show_country_by_expenditure" aria-expanded="false" class="{{ activate_country_expenditure }}"><i class="fa fa-globe" aria-hidden="true"></i>
+                    Expenditure by Country</a>
+            </li>
+             <li>
+                <a href="/dashboard/profile" aria-expanded="false" class="{{ activate_profile }}"><i class="fa fa-user"
+                                                                                                     aria-hidden="true"></i>
+                    Profile</a>
+            </li>
+             <li>
+                <a href="/dashboard/settings" aria-expanded="false" class="{{ activate_settings }}"><i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+                    Settings</a>
+            </li>
+
+
+
+            <li>
+                <a href="/dashboard/logout" onclick="return confirm('Are you sure want to logout?')" aria-expanded="false"><i
+                        class="fa fa-sign-out-alt" aria-hidden="true"></i> Sign
+                    Out</a>
+            </li>
+
+
+        </ul>
+
+
+    </nav>
+
+    <div class="container-fluid">
+        {% block main %}{% endblock main %}
+    </div>
+</div>
+
+
+{% include 'footer.html' %}
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% block js_file %}{% endblock js_file %}
+</body>
+
+</html>
